@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 class VisitanteController extends Controller
 {
     public function listar(){
-        return Visitante::all();
+ 
+        
+        return view('visitante.listar', ['visitantes' => Visitante::all()]);
     }
     
     public function criar(){

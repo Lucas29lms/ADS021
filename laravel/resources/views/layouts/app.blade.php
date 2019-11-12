@@ -71,7 +71,7 @@
             </div>
         </nav>
 
-        @yield('content')
+        @yield('conteudo')
     </div>
 
     <!-- Scripts -->
