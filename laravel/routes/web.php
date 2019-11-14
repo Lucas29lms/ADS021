@@ -24,7 +24,7 @@ Route::group(['prefix' => 'visitante'], function(){
    Route::get('criar', 'VisitanteController@criar'); 
    Route::get('{id}/editar', 'VisitanteController@editar'); 
    Route::get('{id}/remover', 'VisitanteController@remover'); 
-   Route::get('salvar', 'VisitanteController@salvar'); 
+   Route::post('salvar', 'VisitanteController@salvar');
 });
 
 Route::group(['prefix' => 'condominio'], function(){
@@ -32,7 +32,7 @@ Route::group(['prefix' => 'condominio'], function(){
    Route::get('criar', 'CondominioController@criar'); 
    Route::get('{id}/editar', 'CondominioController@editar'); 
    Route::get('{id}/remover', 'CondominioController@remover'); 
-   Route::get('salvar', 'CondominioController@salvar'); 
+   Route::post('salvar', 'CondominioController@salvar');
 });
 
 Route::group(['prefix' => 'unidade'], function(){
@@ -40,5 +40,5 @@ Route::group(['prefix' => 'unidade'], function(){
    Route::get('criar', 'UnidadeController@criar'); 
    Route::get('{id}/editar', 'UnidadeController@editar'); 
    Route::get('{id}/remover', 'UnidadeController@remover'); 
-   Route::get('salvar', 'UnidadeController@salvar'); 
+   Route::post('salvar', 'UnidadeController@salvar');
 });

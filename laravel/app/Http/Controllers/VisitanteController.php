@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Condominio;
+use App\Unidade;
 use App\Visitante;
 use Illuminate\Http\Request;
 
 class VisitanteController extends Controller
 {
     public function listar(){
- 
-        
-        return view('visitante.listar', ['visitantes' => Visitante::all()]);
+
+        $unidades = Unidade::all();
+        return view('visitante.listar', ['visitantes' => Visitante::all()], compact('unidades'));
     }
     
     public function criar(){
-        
+        $visitante = new Visitante();
+        $condominios = Condominio::all();
+        $unidades = Unidade::all();
+
+        return view('visitante.criar', compact('visitante', 'condominios', 'unidades'));
     }
     
     public function editar($id){

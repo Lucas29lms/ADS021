@@ -18,18 +18,18 @@
             @foreach($visitantes as $visitante)
                 <tr>
                     <td>
-                        <a href="/disciplina/excluir/{{$visitante->id}}">Excluir</a>
-                        <a href="/disciplina/alterar/{{$visitante->id}}">Alterar</a>
+                        <a href="/visitante/excluir/{{$visitante->id}}">Excluir</a>
+                        <a href="/visitante/alterar/{{$visitante->id}}">Alterar</a>
                     </td>
-<!--                    <td>{{$visitante->condominio->nome}}</td>
-                    <td>{{$visitante->unidade->numero_unidade}}</td>-->
+                    <td>{{$visitante->condominio->nome}}</td>
+                    <td>{{$visitante->unidade->numero_unidade}}</td>
                     <td>{{$visitante->nome}}</td>
                     <td>{{$visitante->data_entrada}}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-    <a href="/disciplina/cadastro" class="btn btn-primary">Novo</a>
+    <a href="/visitante/criar" class="btn btn-primary">Novo</a>
 </div>
 @endsection
 
