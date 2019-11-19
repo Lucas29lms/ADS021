@@ -18,8 +18,8 @@
             @foreach($visitantes as $visitante)
                 <tr>
                     <td>
-                        <a href="/visitante/excluir/{{$visitante->id}}">Excluir</a>
-                        <a href="/visitante/alterar/{{$visitante->id}}">Alterar</a>
+                        <a href="/visitante/{{$visitante->id}}/remover">Excluir</a>
+                        <a href="/visitante/{{$visitante->id}}/editar">Alterar</a>
                     </td>
                     <td>{{$visitante->condominio->nome}}</td>
                     <td>{{$visitante->unidade->numero_unidade}}</td>

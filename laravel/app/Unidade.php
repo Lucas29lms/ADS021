@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Unidade extends Model
 {
-    protected $fillable = ['numero_unidade', 'proprietario', 'cpf', 'email', 'telefone'];
+    protected $fillable = ['numero_unidade', 'proprietario', 'cpf', 'email', 'telefone', 'condominio_id'];
 
     public function condominio(){
         return $this->belongsTo('\App\Condominio');

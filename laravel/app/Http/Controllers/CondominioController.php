@@ -7,16 +7,24 @@ use Illuminate\Http\Request;
 
 class CondominioController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function listar(){
-        return Condominio::all();
+        $condominios = Condominio::all();
+        return view('condominio.listar', ['condominios' => Condominio::all()], compact('condominios'));
     }
     
     public function criar(){
-        
+        $condominio = new Condominio();
+        return view('condominio.criar', compact('condominio'));
     }
     
     public function editar($id){
-        return Condominio::find($id);
+        $condominio = Condominio::find($id);
+
+        return view('condominio.criar', compact('condominio'));
     }
     
     public function remover($id){
@@ -26,10 +34,11 @@ class CondominioController extends Controller
     }
     
     public function salvar(Request $request){
-        $condominio = new Condominio();
-        
-        if($request->has('id')){
-            $condominio = Condominio::find($id);
+
+        if($request->id){
+            $condominio = Condominio::find($request->id);
+        }else{
+            $condominio = new Condominio($request->all());
         }
         
         $condominio->nome = $request->nome;

@@ -2,21 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Condominio;
 use App\Unidade;
 use Illuminate\Http\Request;
 
 class UnidadeController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function listar(){
-        return Unidade::all();
+        $unidades = Unidade::all();
+        return view('unidade.listar', ['unidades' => Unidade::all()], compact('unidades'));
     }
     
     public function criar(){
-        
+        $unidade = new Unidade();
+        $condominios = Condominio::all();
+        return view('unidade.criar', compact('unidade', 'condominios'));
     }
     
     public function editar($id){
-        return Unidade::find($id);
+
+        $unidade = Unidade::find($id);
+        $condominios = Condominio::all();
+        return view('unidade.criar', compact('unidade', 'condominios'));
     }
     
     public function remover($id){
@@ -26,10 +37,12 @@ class UnidadeController extends Controller
     }
     
     public function salvar(Request $request){
-        $unidade = new Condominio();
-        
-        if($request->has('id')){
-            $unidade = Condominio::find($id);
+
+        if($request->id){
+            $unidade = Unidade::find($request->id);
+            $unidade->fill($request->all());
+        }else{
+            $unidade = new Unidade($request->all());
         }
         
         $unidade->numero_unidade = $request->numero_unidade;
@@ -37,6 +50,7 @@ class UnidadeController extends Controller
         $unidade->cpf = $request->cpf;
         $unidade->email = $request->email;
         $unidade->telefone = $request->telefone;
+        $unidade->condominio_id = $request->condominio_id;
         $unidade->save();
 
 

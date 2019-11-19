@@ -5,7 +5,7 @@
 
     <form action="/visitante/salvar" method="post">
         {{csrf_field()}}
-        {{--<input type="hidden" id="id" name="id" value="{{$visitante->id}}">--}}
+        <input type="hidden" id="id" name="id" value="{{$visitante->id}}">
 
         <div class="col-md-6">
             <div class="form-group row">

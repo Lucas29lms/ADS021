@@ -9,10 +9,14 @@ use Illuminate\Http\Request;
 
 class VisitanteController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function listar(){
 
-        $unidades = Unidade::all();
-        return view('visitante.listar', ['visitantes' => Visitante::all()], compact('unidades'));
+        $visitantes = Unidade::all();
+        return view('visitante.listar', ['visitantes' => Visitante::all()], compact('visitantes'));
     }
     
     public function criar(){
@@ -24,7 +28,10 @@ class VisitanteController extends Controller
     }
     
     public function editar($id){
-        return Visitante::find($id);
+        $visitante = Visitante::find($id);
+        $condominios = Condominio::all();
+        $unidades = Unidade::all();
+        return view('visitante.criar', compact('visitante', 'condominios', 'unidades'));
     }
     
     public function remover($id){
@@ -34,10 +41,11 @@ class VisitanteController extends Controller
     }
     
     public function salvar(Request $request){
-        $visitante = new Visitante();
         
-        if($request->has('id')){
-            $visitante = Visitante::find($id);
+        if($request->id){
+            $visitante = Visitante::find($request->id);
+        }else{
+            $visitante = new Visitante($request->all());
         }
         
         $visitante->condominio_id = $request->condominio_id;
