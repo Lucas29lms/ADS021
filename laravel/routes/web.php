@@ -25,6 +25,7 @@ Route::group(['prefix' => 'visitante'], function(){
    Route::get('{id}/editar', 'VisitanteController@editar'); 
    Route::get('{id}/remover', 'VisitanteController@remover'); 
    Route::post('salvar', 'VisitanteController@salvar');
+   Route::get('obterUnidades/{id}', 'VisitanteController@obterUnidades');
 });
 
 Route::group(['prefix' => 'condominio'], function(){

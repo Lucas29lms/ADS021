@@ -2,7 +2,7 @@
 
 @section('conteudo')
     <h1>Cadastre o Visitante</h1>
-
+<div class="container">
     <form action="/visitante/salvar" method="post">
         {{csrf_field()}}
         <input type="hidden" id="id" name="id" value="{{$visitante->id}}">
@@ -23,7 +23,8 @@
             <div class="form-group row">
                 <label for="data_entrada" class="col-sm-2 col-form-label">Data da Entrada: </label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="data_entrada" name="data_entrada" value="{{$visitante->data_entrada}}">
+                    <input type="text" class="form-control" id="data_entrada" name="data_entrada"
+                           value="{{$visitante->data_entrada}}">
                 </div>
             </div>
             <div class="form-group row">
@@ -57,6 +58,27 @@
             </div>
         </div>
     </form>
-
+</div>
 @endsection
 
+@section('js')
+    <script>
+        $('#condominio_id').change(function () {
+
+            var idCondominio = $(this).val();
+
+            $.get('/visitante/obterUnidades/' + idCondominio, function (unidades) {
+
+                $('#unidade_id').empty();
+
+                $.each(unidades, function (key, value) {
+
+                    $('#unidade_id').append('<option value = ' + value.id + ' > ' + value.numero_unidade + ' </option>');
+
+                });
+
+            });
+
+        });
+    </script>
+@endsection

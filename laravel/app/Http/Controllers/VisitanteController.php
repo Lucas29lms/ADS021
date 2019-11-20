@@ -57,4 +57,8 @@ class VisitanteController extends Controller
         
         return redirect('visitante/listar');
     }
+
+    public function obterUnidades($id){
+       return Condominio::find($id)->unidade;
+    }
 }

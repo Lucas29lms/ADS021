@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Condominio;
+use App\Http\Requests\UnidadeRequest;
 use App\Unidade;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,7 @@ class UnidadeController extends Controller
         return redirect('unidade/listar');
     }
     
-    public function salvar(Request $request){
+    public function salvar(UnidadeRequest $request){
 
         if($request->id){
             $unidade = Unidade::find($request->id);
