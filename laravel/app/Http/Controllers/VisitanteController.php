@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Condominio;
+use App\Http\Requests\VisitanteRequest;
 use App\Unidade;
 use App\Visitante;
 use Illuminate\Http\Request;
@@ -40,7 +41,7 @@ class VisitanteController extends Controller
         return redirect('visitante/listar');
     }
     
-    public function salvar(Request $request){
+    public function salvar(VisitanteRequest $request){
         
         if($request->id){
             $visitante = Visitante::find($request->id);

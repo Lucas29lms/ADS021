@@ -24,7 +24,7 @@ class UnidadeRequest extends FormRequest
     public function rules()
     {
         return [
-            'numero_unidade' => 'required',
+            'numero_unidade' => 'required|unique:unidades',
             'proprietario'  => 'required',
             'cpf'  => 'required|numeric',
             'email'  => 'required',
@@ -37,13 +37,14 @@ class UnidadeRequest extends FormRequest
     {
         return[
           'numero_unidade.required' => 'Campo Unidade é obrigatório',
+          'numero_unidade.unique' => 'Essa unidade já existe',
           'proprietario.required' => 'Campo Proprietário é obrigatório',
           'cpf.required' => 'Campo CPF é obrigatório',
           'cpf.numeric' => 'Campo CPF é numérico',
-          'email.required' => 'Campo CPF é obrigatório',
-          'telefone.required' => 'Campo CPF é obrigatório',
-          'telefone.numeric' => 'Campo CPF é numérico',
-          'condominio_id.required' => 'Campo CPF é obrigatório'
+          'email.required' => 'Campo Email é obrigatório',
+          'telefone.required' => 'Campo Telefone é obrigatório',
+          'telefone.numeric' => 'Campo Telefone é numérico',
+          'condominio_id.required' => 'Campo Condominio é obrigatório'
         ];
 
     }
