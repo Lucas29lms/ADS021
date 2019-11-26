@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Condominio;
+use App\Http\Requests\CondominioRequest;
 use Illuminate\Http\Request;
 
 class CondominioController extends Controller
@@ -33,7 +34,7 @@ class CondominioController extends Controller
         return redirect('condominio/listar');
     }
     
-    public function salvar(Request $request){
+    public function salvar(CondominioRequest $request){
 
         if($request->id){
             $condominio = Condominio::find($request->id);

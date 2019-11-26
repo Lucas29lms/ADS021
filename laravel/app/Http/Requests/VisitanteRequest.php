@@ -34,12 +34,12 @@ class VisitanteRequest extends FormRequest
 
     public function messages(){
         return [
-            'condominio_id.required' => 'Campo é obrigatório',
-            'unidade_id.required' => 'Campo é obrigatório',
-            'nome.required' => 'Campo é obrigatório',
-            'rg.required' => 'Campo é obrigatório',
-            'rg.numeric' => 'Campo numérico',
-            'data_entrada.date'=> 'Campo de data'
+            'condominio_id.required' => 'Campo Condominio é obrigatório',
+            'unidade_id.required' => 'Campo Unidade é obrigatório',
+            'nome.required' => 'Campo Nome é obrigatório',
+            'rg.required' => 'Campo RG é obrigatório',
+            'rg.numeric' => 'Campo RG é numérico',
+            'data_entrada.date'=> 'Formato do campo Data de Entrada inválido. Ex: 2019-12-31'
             ];
     }
 }
