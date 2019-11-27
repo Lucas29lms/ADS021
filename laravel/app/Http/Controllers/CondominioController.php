@@ -8,24 +8,56 @@ use Illuminate\Http\Request;
 
 class CondominioController extends Controller
 {
+    private $ufs = [
+        'AC'=>'Acre',
+        'AL'=>'Alagoas',
+        'AP'=>'Amapá',
+        'AM'=>'Amazonas',
+        'BA'=>'Bahia',
+        'CE'=>'Ceará',
+        'DF'=>'Distrito Federal',
+        'ES'=>'Espírito Santo',
+        'GO'=>'Goiás',
+        'MA'=>'Maranhão',
+        'MT'=>'Mato Grosso',
+        'MS'=>'Mato Grosso do Sul',
+        'MG'=>'Minas Gerais',
+        'PA'=>'Pará',
+        'PB'=>'Paraíba',
+        'PR'=>'Paraná',
+        'PE'=>'Pernambuco',
+        'PI'=>'Piauí',
+        'RJ'=>'Rio de Janeiro',
+        'RN'=>'Rio Grande do Norte',
+        'RS'=>'Rio Grande do Sul',
+        'RO'=>'Rondônia',
+        'RR'=>'Roraima',
+        'SC'=>'Santa Catarina',
+        'SP'=>'São Paulo',
+        'SE'=>'Sergipe',
+        'TO'=>'Tocantins'
+    ];
+    
     public function __construct(){
         $this->middleware('auth');
     }
 
     public function listar(){
         $condominios = Condominio::all();
+
         return view('condominio.listar', ['condominios' => Condominio::all()], compact('condominios'));
     }
     
     public function criar(){
         $condominio = new Condominio();
-        return view('condominio.criar', compact('condominio'));
+        $ufs = $this->ufs;
+        return view('condominio.criar', compact('condominio', 'ufs'));
     }
     
     public function editar($id){
         $condominio = Condominio::find($id);
-
-        return view('condominio.criar', compact('condominio'));
+        $ufs = $this->ufs;
+        return view('condominio.criar', compact('condominio', 'ufs'));
     }
     
     public function remover($id){

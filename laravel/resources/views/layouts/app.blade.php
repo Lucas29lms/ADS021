@@ -31,6 +31,19 @@
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
+
+                    <a class="navbar-brand" href="{{ url('/condominio/listar') }}">
+                        Condominíos
+                    </a>
+
+                    <a class="navbar-brand" href="{{ url('/unidade/listar') }}">
+                        Unidades
+                    </a>
+
+                    <a class="navbar-brand" href="{{ url('/visitante/listar') }}">
+                        Visitantes
+                    </a>
+
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">

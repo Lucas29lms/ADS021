@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('conteudo')
-    <h1>Cadastre o Visitante</h1>
-
     <div class="panel-body">
         @if ($errors->any())
             <ul class="alert alert-warning">
@@ -12,6 +10,7 @@
             </ul>
         @endif
         <div class="container">
+            <h1>Cadastre o Visitante</h1>
             <form action="/visitante/salvar" method="post">
                 {{csrf_field()}}
                 <input type="hidden" id="id" name="id" value="{{$visitante->id}}">
@@ -45,7 +44,6 @@
                                     <option value="{{$condominio->id}}">{{$condominio->nome}}</option>
                                 @endforeach
                             </select>
-
                         </div>
                     </div>
                     <div class="form-group row">
