@@ -45,7 +45,7 @@ class CondominioController extends Controller
     public function listar(){
         $condominios = Condominio::all();
 
-        return view('condominio.listar', ['condominios' => Condominio::all()], compact('condominios'));
+        return view('condominio.listar', ['condominios' => Condominio::paginate(5)], compact('condominios'));
     }
     
     public function criar(){

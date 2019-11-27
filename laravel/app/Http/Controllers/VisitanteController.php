@@ -17,7 +17,7 @@ class VisitanteController extends Controller
     public function listar(){
 
         $visitantes = Unidade::all();
-        return view('visitante.listar', ['visitantes' => Visitante::all()], compact('visitantes'));
+        return view('visitante.listar', ['visitantes' => Visitante::paginate(5)], compact('visitantes'));
     }
     
     public function criar(){
